@@ -19,7 +19,7 @@ const BookAppointment = () => {
       const token = localStorage.getItem('token'); // Get token from local storage
       console.log(localStorage.getItem('token'));
       const res = await axios.post(
-        'http://localhost:4000/api/appointments/appointment',
+        'https://appointment-booking-server-j4yg.onrender.com/api/appointments/appointment',
         formData,{ 
         headers: {
           'Content-Type': 'application/json',
