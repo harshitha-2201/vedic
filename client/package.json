@@ -11,6 +11,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
@@ -39,11 +40,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
   },
-  
-    "plugins": ["@babel/plugin-proposal-private-property-in-object"]
-  
+  "plugins": [
+    "@babel/plugin-proposal-private-property-in-object"
+  ]
 }
