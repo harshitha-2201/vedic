@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode'; // Correct import for jwt-decode
+=======
+// Login.js
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
+>>>>>>> 08b6abac590849964e465072a837d9cd92611df6
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +21,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+<<<<<<< HEAD
       const response = await axios.post('http://localhost:4000/api/auth/login', { email, password });
       console.log(response.data);
       setError('');
@@ -29,6 +39,28 @@ const Login = () => {
       }
     } catch (err) {
       console.error(err);
+=======
+
+      const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/auth/login`, { email, password });
+      console.log(response.data);
+    
+      setError('');
+      
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+  
+      // Decode the token and check the role
+      const decodedToken = jwtDecode(token); // Decode the token
+      const role = decodedToken.role; // Assuming 'role' is in the payload
+  
+      // Navigate based on the user's role
+      if (role === 'admin') {
+        navigate('/list-appointment'); // Admin dashboard route
+      } else {
+        navigate('/book-appointment'); // User dashboard route
+      }
+    } catch (err) {
+>>>>>>> 08b6abac590849964e465072a837d9cd92611df6
       setError(err.response?.data?.message || 'Login failed');
     }
   };
