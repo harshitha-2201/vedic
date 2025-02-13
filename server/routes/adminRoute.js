@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getAppointments, updateAppointmentStatus, updateClientProfile } = require('../controllers/adminController');
-const auth = require('../middleware/authMiddleware');
+const auth = require('../middleware/authMiddleware.js');
 
 
 // Route for fetching appointments
