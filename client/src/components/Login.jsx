@@ -1,7 +1,7 @@
-// Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode'; // Correct import for jwt-decode
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,16 +12,23 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://appointment-booking-server-j4yg.onrender.com/api/auth/login', { email, password });
+      const response = await axios.post('http://localhost:4000/api/auth/login', { email, password });
       console.log(response.data);
       setError('');
-      
-      // Assuming you store the token in localStorage or handle authentication state here
-      localStorage.setItem('token', response.data.token);
-      
-      // Navigate to the booking page after successful login
-      navigate('/book-appointment');
+
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+
+      const decodedToken = jwtDecode(token);
+      const role = decodedToken.role;
+
+      if (role === 'admin') {
+        navigate('/admin-dashboard');
+      } else { 
+        navigate('/book-appointment');
+      }
     } catch (err) {
+      console.error(err);
       setError(err.response?.data?.message || 'Login failed');
     }
   };

@@ -19,7 +19,7 @@ const BookAppointment = () => {
       const token = localStorage.getItem('token'); // Get token from local storage
       console.log(localStorage.getItem('token'));
       const res = await axios.post(
-        'https://appointment-booking-server-j4yg.onrender.com/api/appointments/appointment',
+        'http://localhost:4000/api/appointments/appointment',
         formData,{ 
         headers: {
           'Content-Type': 'application/json',
@@ -27,8 +27,9 @@ const BookAppointment = () => {
         }
     });
       alert(res.data.message);
-    } catch (error) {
-      alert('Error booking appointment');
+    }catch (error) {
+      console.error('Error booking appointment:', error.response ? error.response.data : error);
+      alert(error.response?.data?.message || 'Error booking appointment');
     }
   };
 

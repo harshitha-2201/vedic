@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://appointment-booking-server-j4yg.onrender.com/api/auth/register', { name, email, password, phone });
+      const response = await axios.post('http://localhost:4000/api/auth/register', { name, email, password, phone });
       console.log(response.data);
       setSuccess('Registration successful!');
       setError('');

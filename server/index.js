@@ -5,6 +5,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const appointmentsRoute = require('./routes/appointmentRoute');
+const adminRoute = require('./routes/adminRoute');
 
 
 // Load environment variables
@@ -25,6 +26,8 @@ app.use(cors({
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentsRoute);
+app.use('/api/admin', adminRoute);
+
 
 const PORT = process.env.PORT || 4000;
 

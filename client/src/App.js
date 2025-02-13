@@ -8,6 +8,9 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 import BookAppointment from './components/BookAppointment';
+import AdminDashboard from "./Admin/AdminDashboard";
+
+
 
 function App() {
 
@@ -23,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/book-appointment" element = {<BookAppointment />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       <Footer/>
     </Router>
