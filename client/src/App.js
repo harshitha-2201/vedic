@@ -8,13 +8,9 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 import BookAppointment from './components/BookAppointment';
-<<<<<<< HEAD
 import AdminDashboard from "./Admin/AdminDashboard";
 
 
-=======
-import AdminAppointments from "./components/Admin/AdminAppointments ";
->>>>>>> 08b6abac590849964e465072a837d9cd92611df6
 
 function App() {
 
@@ -30,12 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/book-appointment" element = {<BookAppointment />} />
-<<<<<<< HEAD
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-=======
-        <Route path="/list-appointment" element = {<AdminAppointments />} />
-
->>>>>>> 08b6abac590849964e465072a837d9cd92611df6
       </Routes>
       <Footer/>
     </Router>

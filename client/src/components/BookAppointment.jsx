@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,7 @@ const BookAppointment = () => {
     phone: '',
     date: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,44 +21,22 @@ const BookAppointment = () => {
     try {
       const token = localStorage.getItem('token'); // Get token from local storage
       console.log(localStorage.getItem('token'));
-<<<<<<< HEAD
       const res = await axios.post(
         'http://localhost:4000/api/appointments/appointment',
-=======
-
-      const res = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/appointments/appointment`,
->>>>>>> 08b6abac590849964e465072a837d9cd92611df6
         formData,{ 
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token.trim()}`
         }
-<<<<<<< HEAD
     });
       alert(res.data.message);
+      navigate('/');
+
+
     }catch (error) {
       console.error('Error booking appointment:', error.response ? error.response.data : error);
       alert(error.response?.data?.message || 'Error booking appointment');
     }
-=======
-        
-
-    });
-      alert(res.data.message);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-      });
-
-
-
-    } catch (error) {
-      alert('Error booking appointment');
-    }
-
->>>>>>> 08b6abac590849964e465072a837d9cd92611df6
   };
 
   return (

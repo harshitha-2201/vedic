@@ -1,6 +1,8 @@
 // Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -9,18 +11,17 @@ const Register = () => {
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-<<<<<<< HEAD
       const response = await axios.post('http://localhost:4000/api/auth/register', { name, email, password, phone });
-=======
-      const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/auth/register`, { name, email, password, phone });
->>>>>>> 08b6abac590849964e465072a837d9cd92611df6
       console.log(response.data);
       setSuccess('Registration successful!');
       setError('');
+      navigate('/login');
+
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
